@@ -1,0 +1,40 @@
+menu: #站点右上角导航栏
+  Home: /
+  Archives: /archives
+  About: /about
+  TODO: /todolist
+
+widgets: #站点右边栏
+- search
+- category
+- tagcloud
+- weibo
+- blogroll
+
+excerpt_link: Read More
+
+twitter:
+  username:
+  show_replies: false
+  tweet_count: 5
+
+addthis:
+  enable: true
+  pubid:
+  facebook: true
+  twitter: true
+  google: true
+  pinterest: true
+
+fancybox: true
+
+google_analytics:
+rss:
+
+comment_provider: facebook
+# Facebook comment
+facebook:
+  appid: 123456789012345
+  comment_count: 5
+  comment_width: 840
+  comment_colorscheme: light
