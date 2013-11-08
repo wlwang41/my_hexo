@@ -2,14 +2,12 @@ menu: #站点右上角导航栏
   Home: /
   Archives: /archives
   About: /about
-  TODO: /todolist
 
 widgets: #站点右边栏
-- search
 - category
 - tagcloud
-- weibo
 - blogroll
+- weibo
 
 excerpt_link: Read More..
 
@@ -29,7 +27,7 @@ addthis:
 fancybox: true
 
 google_analytics:
-rss:
+rss: /atom.xml
 
 comment_provider: facebook
 # Facebook comment
