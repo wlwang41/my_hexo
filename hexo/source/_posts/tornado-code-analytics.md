@@ -17,37 +17,73 @@ categories:
 
 `web.py` 模块主要包括：
 
-* class Requesthandler: 定义了一些基本的http方法供子类继承, 如get post方法
+* class ***Requesthandler***: 定义了一些基本的http方法供子类继承, 如get post方法
     `Requesthandler`以及tornado其他地方的方法都不是线程安全的, `~RequestHandler.write()`, `~RequestHandler.finish()`,
 `~RequestHandler.flush()` 只应该在主线程中被调用, 如果使用了多线程, 非常重要的一点是要用 `.IOLoop.add_callback` 在结束请求之前回到主线程上
-* decorator asynchronous: 如果请求是异步的那么可以warp此装饰器。
+
+* decorator ***asynchronous***: 如果请求是异步的那么可以wrap此装饰器。
     如果用上了此装饰器的请求, 将只会在调用了 `self.finish() <RequestHandler.finish>` 方法之后才会结束, 例如：
 
-    ```python
-    class MyRequestHandler(web.RequestHandler):
-        @web.asynchronous
-        def get(self):
-           http = httpclient.AsyncHTTPClient()
-           http.fetch("http://friendfeed.com/", self._on_download)
+```python
+class MyRequestHandler(web.RequestHandler):
+    @web.asynchronous
+    def get(self):
+       http = httpclient.AsyncHTTPClient()
+       http.fetch("http://friendfeed.com/", self._on_download)
 
-        def _on_download(self, response):
-           self.write("Downloaded!")
-           self.finish()
-    ```
+    def _on_download(self, response):
+       self.write("Downloaded!")
+       self.finish()
+```
 
-    3.1之后推荐使用 ``@gen.coroutine``
-* decorator removeslash: 去掉请求路径尾部的下划线的装饰器
-* decorator addslash: 加上请求路径尾部的下划线的装饰器
-* class Application: 一些handlers的集合就组成了一个web application
+3.1之后推荐使用 `@gen.coroutine`
+
+* decorator ***removeslash***: 去掉请求路径尾部的下划线的装饰器
+
+* decorator ***addslash***: 加上请求路径尾部的下划线的装饰器
+
+* class ***Application***: 一些handlers的集合就组成了一个web application
     这个类的实例可以直接传给HTTPServer:
 
-    ```python
-    application = web.Application([
-        (r"/", MainPageHandler),
-    ])
-    http_server = httpserver.HTTPServer(application)
-    http_server.listen(8080)
-    ioloop.IOLoop.instance().start()
-    ```
+```python
+application = web.Application([
+    (r"/", MainPageHandler),
+])
+http_server = httpserver.HTTPServer(application)
+http_server.listen(8080)
+ioloop.IOLoop.instance().start()
+```
 
-    StaticFileHandler 艹没看明白
+* class ***StaticFileHandler***: 设置小的静态资源的路径(浏览器可以缓存)，大的静态资源，还是用nginx或者apache处理比较妥当，支持HTTP ``Accept-Ranges``的机制返回文件的部分内容，支持版本化的url以便最大化的利用浏览器缓存的效率。这个handler的继承机制也比较复杂，具体的参看源码。
+
+* class ***FallbackHandler(Requesthandler)***: 可以包裹另一个HTTP server的回调函数(牛逼)。
+    fallback是一个接收 `~.httpserver.HTTPRequest`(`Application` | `tornado.wsgi.WSGIContainer`)的可执行对象。具体例子：
+    
+```python
+wsgi_app = tornado.wsgi.WSGIContainer(
+    django.core.handlers.wsgi.WSGIHandler())
+application = tornado.web.Application([
+    (r"/foo", FooHandler),
+    (r".*", FallbackHandler, dict(fallback=wsgi_app),
+])
+```
+
+* class ***OutputTransform***: 修改HTTP request的结果(e.g, GZip encoding)
+
+* class ***GZipContentEncoding(OutputTransform)***: 为response打包一些[静态资源](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11)，比如text/html等。
+
+* class ***ChunkedTransferEncoding(OutputTransform)***: response大文件传输的编码(not sure)
+
+* decorator ***authenticated***: 需要用户登录的装饰器，如果用户没有登录就会跳转到配置过的 `login url <RequestHandler.get_login_url>`。
+
+* class ***UIModule***: 一个可重用的，模块化的UI单元。
+
+* class ***TemplateModule(UIModule)***: 渲染给定的模板。
+
+* class ***URLSpec(object)***: Application里面mapping URLs 和 handlers。
+
+* function ***create_signed_value(secret, name, value)***: 创建签名(用于加密)
+
+* function ***decode_signed_value(secret, name, value, max_age_days=31)***: 解开签名(解密)
+
+## httpserver.py
