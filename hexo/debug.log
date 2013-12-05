@@ -1,5 +1,5 @@
-date: 2013-11-03 21:56:36.812
-argv: node /usr/local/bin/hexo generate --deploy
+date: 2013-12-05 16:03:51.926
+argv: node /usr/local/bin/hexo server
 os: Darwin 13.0.0 darwin x64
 version:
   hexo: 2.3.0
@@ -13,69 +13,31 @@ version:
   openssl: 1.0.1e
 ---
 
-[debug] 21:56:36.329 Configuration file load successfully
-[debug] 21:56:36.331 Version info checked successfully
-[debug] 21:56:36.331 Loading the database...
-[debug] 21:56:36.689 Theme layout loaded
-[debug] 21:56:36.714 Processed: favicon.ico
-[debug] 21:56:36.741 Theme source loaded
-[debug] 21:56:36.753 Theme configuration loaded
-[debug] 21:56:36.769 Theme i18n loaded
-[error] 21:56:36.781 HexoError: Process failed: _posts/hello-world.md
-TypeError: Cannot read property 'length' of null
-    at /usr/local/lib/node_modules/hexo/lib/plugins/filter/external_link.js:26:36
-    at String.replace (native)
-    at module.exports (/usr/local/lib/node_modules/hexo/lib/plugins/filter/external_link.js:11:31)
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:111:11
-    at iterate (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:131:13)
-    at /usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:142:25
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:118:13
-    at module.exports (/usr/local/lib/node_modules/hexo/lib/plugins/filter/auto_spacing.js:7:36)
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:111:11
-    at iterate (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:131:13)
-
-[error] 21:56:36.812 HexoError: Process failed: _posts/测试发表文章.md
-TypeError: Cannot read property 'length' of null
-    at isEndWith (/usr/local/lib/node_modules/hexo/lib/model/schema.js:8:17)
-    at Object.permalinkGetter (/usr/local/lib/node_modules/hexo/lib/model/schema.js:14:17)
-    at Model._applyGetter (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:165:24)
-    at Model.get.Model.findById (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:222:19)
-    at /usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:442:20
-    at Object.async.eachSeries (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:127:20)
-    at Model._save (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:434:9)
-    at Model.insert (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:481:8)
-    at /usr/local/lib/node_modules/hexo/lib/model/hooks/post.js:35:16
-    at Array.forEach (native)
-[debug] 21:56:36.329 Configuration file load successfully
-[debug] 21:56:36.331 Version info checked successfully
-[debug] 21:56:36.331 Loading the database...
-[debug] 21:56:36.689 Theme layout loaded
-[debug] 21:56:36.714 Processed: favicon.ico
-[debug] 21:56:36.741 Theme source loaded
-[debug] 21:56:36.753 Theme configuration loaded
-[debug] 21:56:36.769 Theme i18n loaded
-[error] 21:56:36.781 HexoError: Process failed: _posts/hello-world.md
-TypeError: Cannot read property 'length' of null
-    at /usr/local/lib/node_modules/hexo/lib/plugins/filter/external_link.js:26:36
-    at String.replace (native)
-    at module.exports (/usr/local/lib/node_modules/hexo/lib/plugins/filter/external_link.js:11:31)
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:111:11
-    at iterate (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:131:13)
-    at /usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:142:25
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:118:13
-    at module.exports (/usr/local/lib/node_modules/hexo/lib/plugins/filter/auto_spacing.js:7:36)
-    at /usr/local/lib/node_modules/hexo/lib/post/render.js:111:11
-    at iterate (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:131:13)
-
-[error] 21:56:36.812 HexoError: Process failed: _posts/测试发表文章.md
-TypeError: Cannot read property 'length' of null
-    at isEndWith (/usr/local/lib/node_modules/hexo/lib/model/schema.js:8:17)
-    at Object.permalinkGetter (/usr/local/lib/node_modules/hexo/lib/model/schema.js:14:17)
-    at Model._applyGetter (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:165:24)
-    at Model.get.Model.findById (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:222:19)
-    at /usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:442:20
-    at Object.async.eachSeries (/usr/local/lib/node_modules/hexo/node_modules/async/lib/async.js:127:20)
-    at Model._save (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:434:9)
-    at Model.insert (/usr/local/lib/node_modules/hexo/node_modules/warehouse/lib/model.js:481:8)
-    at /usr/local/lib/node_modules/hexo/lib/model/hooks/post.js:35:16
-    at Array.forEach (native)
+[debug] 16:03:51.645 Configuration file load successfully
+[debug] 16:03:51.649 Plugin loaded successfully: hexo-generator-feed
+[debug] 16:03:51.652 Plugin loaded successfully: hexo-generator-sitemap
+[debug] 16:03:51.652 Version info checked successfully
+[debug] 16:03:51.652 Loading the database...
+[debug] 16:03:51.872 Theme layout loaded
+[debug] 16:03:51.872 Start watching theme layout...
+[debug] 16:03:51.881 Processed: favicon.ico
+[debug] 16:03:51.887 Theme source loaded
+[debug] 16:03:51.889 Theme configuration loaded
+[debug] 16:03:51.890 Start watching theme source...
+[debug] 16:03:51.901 Theme i18n loaded
+[debug] 16:03:51.911 Processed: 404.html
+[debug] 16:03:51.917 Processed: about/index.md
+[debug] 16:03:51.922 Processed: _posts/测试发表文章.md
+[error] 16:03:51.924 { rawMessage: 'Unable to parse.',
+  parsedLine: 7,
+  snippet: 'Investigate',
+  parsedFile: null,
+  message: 'Unable to parse.',
+  domain: 
+   { domain: null,
+     _events: { error: [Function] },
+     _maxListeners: 10,
+     members: [],
+     _disposed: true },
+  domainThrown: true }
+[debug] 16:03:51.938 Processed: _posts/tornado-code-analytics.md
