@@ -3,6 +3,7 @@ date: 2013-11-04 20:46:44
 tags:
 - python
 - tornado
+
 categories:
 ---
 
@@ -58,7 +59,7 @@ ioloop.IOLoop.instance().start()
 
 * class ***FallbackHandler(Requesthandler)***: 可以包裹另一个HTTP server的回调函数(牛逼)。
     fallback是一个接收 `~.httpserver.HTTPRequest`(`Application` | `tornado.wsgi.WSGIContainer`)的可执行对象。具体例子：
-    
+
 ```python
 wsgi_app = tornado.wsgi.WSGIContainer(
     django.core.handlers.wsgi.WSGIHandler())
@@ -87,3 +88,11 @@ application = tornado.web.Application([
 * function ***decode_signed_value(secret, name, value, max_age_days=31)***: 解开签名(解密)
 
 ## httpserver.py
+
+* class ***HTTPServer(TCPServer)***: 非阻塞单线程HTTPserver.初始化一个`HTTPServer`对象有下面3种方式：
+
+    1. `~tornado.tcpserver.TCPServer.listen`:
+
+    2. `~tornado.tcpserver.TCPServer.bind`/`~tornado.tcpserver.TCPServer.start`:
+
+    3. `~tornado.tcpserver.TCPServer.add_sockets`:
