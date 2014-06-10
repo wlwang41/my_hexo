@@ -87,3 +87,5 @@ deploy:
   type: github
   repository: https://github.com/wlwang41/wlwang41.github.io.git
   branch: master
+
+markdown: kramdown
